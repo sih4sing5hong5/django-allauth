@@ -142,14 +142,13 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.dropbox',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.evernote',
+#     'allauth.socialaccount.providers.evernote',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.linkedin',
     'allauth.socialaccount.providers.openid',
     'allauth.socialaccount.providers.persona',
     'allauth.socialaccount.providers.soundcloud',
-    'allauth.socialaccount.providers.stackexchange',
     'allauth.socialaccount.providers.twitch',
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.vimeo',
@@ -193,3 +192,14 @@ try:
     from local_settings import *
 except ImportError:
     pass
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'SCOPE': ['email', ],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'METHOD': 'oauth2',
+#         'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.2'}}
+
+# LOGIN_URL='/accounts/facebook/login'
